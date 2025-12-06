@@ -12,7 +12,6 @@ import matplotlib.colors as color
 import palettable as brew
 #import brewer2mpl as brew
 import matplotlib.gridspec as gridspec
-import matplotlib.patches as pat
 
 plt.rcParams['font.family']='sans-serif'
 

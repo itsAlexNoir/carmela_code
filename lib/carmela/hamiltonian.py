@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import numpy as np
 from . import axes as ax
 from . import fdrule as fd
