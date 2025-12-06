@@ -25,10 +25,15 @@ Carmela Code solves the **time-dependent Schrödinger equation** for a one-elect
 Clone this repo and install dependencies:
 
 ```bash
-git clone <your-repo-url>
+git clone git@github.com:itsAlexNoir/carmela_code.git
 cd carmela_code
 pip install -e .
 ```
+although, it is recommend to use uv instead of plain pip:
+```bash
+uv sync
+```
+
 
 ### Usage
 
