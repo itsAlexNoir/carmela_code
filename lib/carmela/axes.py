@@ -62,7 +62,7 @@ class kaxes():
         ########################################################
 
 ###########################################################
-def gaussleg(x1,x2,degree):
+def gaussleg(x1: float, x2: float, degree: int) -> tuple[np.ndarray, np.ndarray]:
     """
     Compute the Gauss-Legendre quadrature points and weights for numerical integration.
 

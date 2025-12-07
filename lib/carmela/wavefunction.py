@@ -7,7 +7,7 @@
 import numpy as np
 
 class wavefunction():
-    def __init__(self,axis):
+    def __init__(self, axis):
 
         self.axis = axis
         self.numpts = axis.maxptsx

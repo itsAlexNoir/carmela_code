@@ -21,7 +21,7 @@ class absorber():
         make_split(wavefunc):
             Applies the absorption factor to the given wavefunction and returns the modified wavefunction.
     """
-    def __init__(self,axes,xsplit,Medge):
+    def __init__(self, axes, xsplit, Medge):
         """
         Initializes the absorber object.
 

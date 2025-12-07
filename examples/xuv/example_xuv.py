@@ -4,9 +4,14 @@
    Schroedinger equation.
 """
 
+import logging
+from pathlib import Path
+import typer
 import numpy as np
-from carmela import constants as const
-from carmela import input_reader as inp
+
+from carmela.config import Config
+from carmela.constants import constants as const
+
 from carmela import axes as axes
 from carmela import wavefunction as wavef
 from carmela import hamiltonian as ham
@@ -15,25 +20,35 @@ from carmela import laser
 from carmela import absorber
 from carmela import flux
 
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger(__name__)
 
-def main():
-    print('Starting!\n')
+
+def cli():
+    typer.run(main)
+
+def main(config_path: Path = Path("examples/conf/example_xuv.yaml")):
+    log.info("="* 40)
+    log.info('Carmela XUV example')
+    log.info("=" * 40)
+    log.info("Purpose: run a 1D time-dependent Schrödinger simulation driven by an XUV pulse; compute observables (populations, acceleration), extract photoelectron spectra, and save results to disk.")
+    log.info("=" * 40)
 
     # Fetch parameters form input file
-    inp_params = {}
-    inp.read_input(inp_params,'./input.inp')
-    params = inp.parameters(inp_params)
+    log.info('Reading config file')
+    params = Config.from_yaml(config_path)
+
 
     # Create mesh
-    print('Creating mesh')
+    log.info('Creating mesh')
     ax = axes.axes(params.maxptsx,params.dx)
 
     # Create wavefunction
-    print('Creating wavefunction')
+    log.info('Creating wavefunction')
     psi = wavef.wavefunction(ax)
 
     # Create hamiltonian
-    print('Creating hamiltonian')
+    log.info('Creating hamiltonian')
     hydro_ham = ham.hamiltonian(ax,'hydrogen',1,
                         gauge_type='velocity',omega=2.0)
 
@@ -165,4 +180,4 @@ def main():
     print('\nFin!')
 
 if __name__ == "__main__":
-    main()
+    cli()
